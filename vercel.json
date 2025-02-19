@@ -13,7 +13,7 @@
         }
     ],
     "env": {
-        "MONGODB_URI": "@mongodb_uri",
+        "URI": "@mongodb_uri",
         "RAPIDAPI_KEY": "@rapidapi_key",
         "RAPIDAPI_HOST": "@rapidapi_host",
         "RAPIDAPI_HOST_AUTH": "@rapidapi_host_auth",
