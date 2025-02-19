@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "server.js"
+        }
+    ],
+    "env": {
+        "MONGODB_URI": "@mongodb_uri",
+        "RAPIDAPI_KEY": "@rapidapi_key",
+        "RAPIDAPI_HOST": "@rapidapi_host",
+        "RAPIDAPI_HOST_AUTH": "@rapidapi_host_auth",
+        "LINE_NOTIFY_TOKEN": "@line_notify_token"
+    }
+}

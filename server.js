@@ -5,13 +5,16 @@ const cron = require("node-cron");
 const cors = require("cors")
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors())
 
 const mongoose = require('mongoose');
 const uri = process.env.URI;
-mongoose.connect(uri);
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on("error", (err) => console.error("❌ MongoDB Connection Error:", err));
@@ -28,6 +31,10 @@ app.use("/api/support", supportRoutes);
 
 require("./cron/checkStock");
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
